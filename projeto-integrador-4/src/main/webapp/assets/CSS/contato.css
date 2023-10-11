@@ -1,0 +1,157 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 20px;
+}
+
+.nav-bar{
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	list-style: none;
+	gap: 20px;
+	background-color: #D431D4;
+	padding: 10px;
+	border-radius: 15px;
+	transition: 0.4s ease-in-out;
+    width: 500px;
+    height: 45px;
+
+}
+
+.nav-list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.nav-list li{
+    float: left;
+}
+
+.nav-list li a{
+    text-decoration: none;
+	font-size: 25px;
+	font-family: Impact, Haettenschweiler, sans-serif;
+	color: black;
+	transition: 0.2s ease-in-out;
+    display: block;
+    padding: 10px 11px;
+}
+
+.nav-list li a:hover{
+    color: #fff;
+    padding-top: 5px;
+}
+
+/*DESIGN DROPDOWN*/
+.dropdown{
+    float: left;
+    overflow: hidden;
+	z-index: 2;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    width: 10%;
+	z-index: 3;
+}
+
+.dropdown-content a{
+    display: none;
+    color: black;
+    background-color: #D431D4;
+    text-align: center;
+}
+
+.dropdown-content a:hover{
+    background-color: #e25ce2;
+    padding: none;
+}
+
+.dropdown:hover .dropdown-content{ 
+    display: block;
+}
+
+.container-contato{
+    display: flex;
+    justify-content: center;
+
+    
+}
+
+.container-contato img{
+    padding: 1rem;
+
+    width: 30rem;
+}
+
+.footer-content{
+    display: flex;
+    justify-content: center;
+
+    background-color: #e25ce2;
+    padding: 40px;
+    font-size: 2rem;
+
+    gap: 30px;
+}
+
+.footer-content a{
+    color: inherit;
+    text-decoration: none;
+}
+
+h1{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p{
+	width: 80%;
+
+    text-align: center;
+    font-size: larger;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    margin: auto;
+	padding: 1.5em 0em;
+}
+
+.list-time{
+    width: 80%;
+
+    text-align: center;
+    font-size: larger;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    margin: auto;
+}
+
+::-webkit-scrollbar {
+    width: 0.875rem;
+}
+
+*::-webkit-scrollbar-track {
+    background: #f1e9e9;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #e25ce2;
+    border-radius: 0.625rem;
+    border: 0.1875rem solid #ffffff;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #D431D4;
+}
