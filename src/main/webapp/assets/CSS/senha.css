@@ -1,0 +1,56 @@
+body{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:rgb(17, 17, 24);
+}
+
+.container-senha{
+  background-color: rgb(255, 206, 244);
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  padding: 30px 40px;
+  border: 5px solid rgb(253, 33, 183);
+  border-radius: 10px;
+  border-style: solid;
+  color:rgb(249, 5, 180);
+  gap: 20px;
+}
+
+#name, #email, #data{
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+  box-shadow: 1px 1px 6px #0000001c;
+  padding-left: 10px;
+ 
+}
+
+#name:hover, #email:hover, #data:hover{
+  background-color: #f8e9f6;
+}
+
+.container-senha button{
+  background-color: rgb(255, 0, 212);
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 15px;
+}
+
+.container-senha button a{
+  color: white;
+  text-decoration: none;
+}
+
+.container-senha button:hover{
+  background-color: #D431D4;
+}

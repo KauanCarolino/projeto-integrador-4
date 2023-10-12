@@ -14,7 +14,7 @@ public class Usuario {
 	@GeneratedValue
 	private Integer id;
 	private String email;
-	private String senha;
+	private String senha = "OpenSesame";
 	@Column(name = "nome_completo")
 	private String nome;
 	private boolean ativo;
