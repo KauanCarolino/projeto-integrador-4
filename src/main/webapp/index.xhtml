@@ -8,12 +8,41 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
+
 	<meta charset="UTF-8"/>
-    <title>Cadastro de Jogos</title> 
+    <title>Cadastro</title> 
+    <h:outputStylesheet library="css" name="estilo.css"/>
 </h:head>
 
 <h:body>
-   <h:outputText value="Oiii"></h:outputText>
+
+	<header>
+		A
+	</header>
+	
+	<div id="conteudo">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Nome: " for="nome"/>
+				<h:inputText id="nome" />
+				
+				<h:outputLabel value="Email: " for="email"/>
+				<h:inputText id="email" />
+				
+				<h:outputLabel value="Senha: " for="toggle"/>				
+				<h:inputSecret id="toggle" toggleMask="true" redisplay="true"/>
+				
+				<h:outputLabel value="Confirmar Senha: " for="toggle2"/>				
+				<h:inputSecret id="toggle2"/>
+				
+				<h:outputLabel value="Data Nascimento:  " for="dataNasc"/>				
+				<h:inputText id="dataNasc"/>
+				
+				<h:commandButton value="Cadastra-se"/>
+			</h:panelGrid>
+		</h:form>
+	</div>
+
     
 </h:body>
 </html>
