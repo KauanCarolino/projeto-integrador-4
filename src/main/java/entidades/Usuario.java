@@ -1,7 +1,6 @@
 package entidades;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,18 +11,18 @@ import javax.persistence.Id;
 public class Usuario {
 	@Id
 	@GeneratedValue
-	private Integer id;
+	private Integer id = 0;
 	private String email;
 	private String senha;
 	@Column(name = "nome_completo")
 	private String nome;
-	private boolean ativo;
+	private boolean ativo = true;
 	private String dataNasc;
-	private LocalDate dataCad;
+	private LocalDate dataCad = LocalDate.now();
 	
 	@Override
 	public String toString() {
-		return id + " - " + email + " - " + senha + " - " + nome  + " - " + ativo  + " - " + dataNasc  + " - " + dataCad;
+		return id + " - " + nome + " - " + email + " - " + senha  + " - " + ativo  + " - " + dataNasc  + " - " + dataCad;
 	}
 	
 	public Integer getId() {
