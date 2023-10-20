@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16963765412990" configfile="/projeto-integrador-4/src/main/webapp/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16963765412990" configfile="/projeto-integrador-4/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="370" id="pf16978199374600" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf16978199374611 pf16978276476373" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="bemvindo.xhtml" x="338" y="178" id="pf16978199374612" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf16978199374611" path="/bemvindo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="LoginUsuario.xhtml" x="338" y="562" id="pf16978276476374" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf16978276476373" path="/LoginUsuario.xhtml"/>
+  <links id="pf16978199374611" target="pf16978199374612" source="pf16978199374600" outcome="loginSucesso"/>
+  <links id="pf16978276476373" target="pf16978276476374" source="pf16978199374600" outcome="login"/>
+</pageflow:Pageflow>
