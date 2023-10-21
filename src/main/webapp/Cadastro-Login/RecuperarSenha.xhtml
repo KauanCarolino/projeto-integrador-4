@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+
+	<meta charset="UTF-8"/>
+    <title>Cadastro Usuario</title> 
+    <h:outputStylesheet library="css" name="estilo.css"/>
+</h:head>
+
+<h:body>
+
+	<header>
+		A
+	</header>
+	
+	<div id="conteudo">
+		<h:form>
+			<h2>
+				<h:outputText value="Recuperar Senha" />
+			</h2>
+			<p:outputLabel value="Email    ⠀⠀⠀" />
+			<p:inputText value="#{usuarioBean.usuario.email}" />
+			<br />
+			<br />
+			
+			<p:outputLabel value="Data Nasc    ⠀⠀⠀" />
+			<p:inputMask id="date" value="#{usuarioBean.usuario.dataNasc}" mask="99/99/9999" />
+			<br />
+			<br />
+
+			<p:outputLabel value="Senha  " />
+			<p:inputText value="#{usuarioBean.usuario.senha}" />
+			<br />
+			<br />
+			
+			<p:commandButton action="#{usuarioBean.}" value="Recuperar"/>
+		</h:form>
+	</div>
+
+    
+</h:body>
+</html>
+
