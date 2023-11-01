@@ -8,10 +8,10 @@ import entidades.Usuario;
 public class UseUsuario {
 	public static void main(String[] args) {
 		//Salvando
-		Usuario a1 = new Usuario(); 
-		a1.setAtivo(true);
-		a1.setDataCad(LocalDate.now());
-		UsuarioDao.salvar(a1);
+//		Usuario a1 = new Usuario(); 
+//		a1.setAtivo(true);
+//		a1.setDataCad(LocalDate.now());
+//		UsuarioDao.salvar(a1);
 		
 		//Editando
 //		Usuario a1 = UsuarioDao.acharPorId(1);

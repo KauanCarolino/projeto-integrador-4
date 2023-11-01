@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+
 @Entity
 public class Usuario {
 	@Id
@@ -67,5 +68,6 @@ public class Usuario {
 	public void setDataCad(LocalDate dataCad) {
 		this.dataCad = dataCad;
 	}
+	
 	
 }
