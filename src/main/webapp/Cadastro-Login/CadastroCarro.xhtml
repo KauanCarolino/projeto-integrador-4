@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+
+	<meta charset="UTF-8"/>
+    <title>Cadastro Carro</title> 
+    <h:outputStylesheet library="css" name="estilo.css"/>
+</h:head>
+
+<h:body>
+
+	<header>
+		A
+	</header>
+	
+	<div id="conteudo">
+		<h:form>
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Marca: " for="marca"/>
+				<p:inputText id="marca" value="#{carroBean.carro.marca}"/>
+			
+				<p:outputLabel value="Modelo: " for="modelo"/>
+				<p:inputText id="modelo" value="#{carroBean.carro.modelo}"/>
+				
+				<p:outputLabel value="Ano Fabricacao: " for="anoFabricacao"/>
+				<p:inputText id="anoFabricacao" value="#{carroBean.carro.anoFabricacao}"/>
+				
+				<p:outputLabel value="Ano Modelo " for="anoModelo"/>
+				<p:inputText id="anoModelo" value="#{carroBean.carro.anoModelo}"/>
+				
+				<p:outputLabel value="Valor: " for="valor"/>
+				<p:inputText id="valor" value="#{carroBean.carro.valor}"/>
+				
+				<p:outputLabel value="Descrição: " for="descricao"/>
+				<p:inputText id="descricao" value="#{carroBean.carro.descricao}"/>
+				
+				<p:commandButton action="#{carroBean.salvar()}" value="Cadastra-se"/>
+			</p:panelGrid>
+		</h:form>
+	</div>
+
+    
+</h:body>
+</html>
+
