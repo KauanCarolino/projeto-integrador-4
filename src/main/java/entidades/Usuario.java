@@ -17,6 +17,7 @@ public class Usuario {
 	private String senha;
 	@Column(name = "nome_completo")
 	private String nome;
+	private String telefone;
 	private boolean ativo = true;
 	private String dataNasc;
 	private LocalDate dataCad = LocalDate.now();
@@ -69,5 +70,11 @@ public class Usuario {
 		this.dataCad = dataCad;
 	}
 	
-	
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 }

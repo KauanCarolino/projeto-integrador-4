@@ -91,6 +91,22 @@ public class Carro {
 		this.descricao = descricao;
 	}
 
+	public void setInteresseDemonstrado(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNomeInteressado(String nomeUsuario) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setTelefoneInteressado(String telefoneUsuario) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 
 
