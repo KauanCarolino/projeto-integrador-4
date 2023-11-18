@@ -16,13 +16,15 @@ public class Carro {
 	private int anoModelo;
 	private String valor;
 	private String descricao;
+	
+    private boolean reservado;
 
 
 	@Override
 	public String toString() {
 		return id + " - " + marca + " - " + modelo + " - " + anoFabricacao  + " - " + anoModelo  + " - " + valor  + " - " + descricao;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
