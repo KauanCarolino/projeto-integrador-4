@@ -1,11 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" data-bs-theme="dark" 
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <meta charset="UTF-8"/>
@@ -20,11 +18,13 @@
 
     <div class="card">
         <h5>Row Editing</h5>
-			<p:dataTable id="usuarios" var="usuario" value="#{usuarioBean.listaUsuarios}" editable="true" style="margin-bottom:20px">
+			<p:dataTable id="usuarios" var="usuario" value="#{usuarioBean.usuario}" editable="true" style="margin-bottom:20px">
                      style="margin-bottom:20px">
 
-			<p:ajax event="rowEdit" listener="#{usuarioBean.onRowEdit}" update=":form:msgs"/>
-            <p:ajax event="rowEditCancel" listener="#{usuarioBean.onRowCancel}" update=":form:msgs"/>
+            <p:ajax event="rowEdit" listener="#{dtEditView.onRowEdit}" update=":form:msgs"/>
+            <p:commandButton value="Deletar" action="#{usuarioBean.deletarUsuario()}">
+		    	<f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.usuario}" />
+			</p:commandButton>
 
             <p:column headerText="Id">
                 <p:cellEditor>
@@ -32,12 +32,12 @@
                         <h:outputText value="#{usuario.id}"/>
                     </f:facet>
                     <f:facet name="input">
-                        <p:inputText id="modelInput" value="#{usuario.id}" style="width:100%" disabled="true"/>
+                        <p:inputText id="modelInput" value="#{usuario.id}" style="width:100%"/>
                     </f:facet>
                 </p:cellEditor>
             </p:column>
 
-            <p:column headerText="Nome">
+            <p:column headerText="Name">
                 <p:cellEditor>
                     <f:facet name="output">
                         <h:outputText value="#{usuario.nome}"/>
@@ -58,8 +58,19 @@
                     </f:facet>
                 </p:cellEditor>
             </p:column>
+			
+			<p:column headerText="Telefone">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{usuario.telefone}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{usuario.telefone}" style="width:100%" label="Name"/>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
             
-			<p:column headerText="Data Nascimento">
+            <p:column headerText="Data Nascimento">
                 <p:cellEditor>
                     <f:facet name="output">
                         <h:outputText value="#{usuario.dataNasc}"/>
@@ -69,13 +80,13 @@
                     </f:facet>
                 </p:cellEditor>
             </p:column>
-
+			
             <p:column style="width:6rem">
                 <p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>
             </p:column>
         </p:dataTable>
     </div>
-    </h:form>
+   </h:form>
 
 </h:body>
 </html>

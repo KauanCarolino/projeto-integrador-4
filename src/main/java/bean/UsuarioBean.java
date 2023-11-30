@@ -1,34 +1,31 @@
 package bean;
+import bean.UsuarioBean;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.application.NavigationHandler;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpSession;
-import javax.transaction.Transactional;
-
-import org.primefaces.event.CellEditEvent;
-import org.primefaces.event.RowEditEvent;
 
 import DAO.UsuarioDao;
 import entidades.Usuario;
 
-
 @ManagedBean
 public class UsuarioBean {
 	private Usuario usuario = new Usuario();
-
+		
     private String novaSenha;
     private String confirmaSenha;
     
-    
-    // Outros campos e métodos do bean...
+    private List<Usuario> listaUsuario;
 
-    public String getNovaSenha() {
+    public UsuarioBean() {
+        listaUsuario = UsuarioDao.acharTodos();
+    }
+
+	public String getNovaSenha() {
         return novaSenha;
     }
 
@@ -56,22 +53,25 @@ public class UsuarioBean {
 		UsuarioDao.salvar(usuario);
 	}
 
-	public String validarLogin() {
-	    Usuario usuarioValidado = UsuarioDao.validarLogin(usuario.getEmail(), usuario.getSenha());
+	public void validarLogin() {
+		System.out.println("Antes de chamar UsuarioDao.validarLogin");
+		Usuario usuarioValidado = UsuarioDao.validarLogin(usuario.getEmail(), usuario.getSenha());
+		System.out.println("Depois de chamar UsuarioDao.validarLogin");
+
 
 	    if (usuarioValidado != null) {
 	        // Login válido, redirecionar para a página de boas-vindas
 	        FacesContext context = FacesContext.getCurrentInstance();
             HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
             session.setAttribute("usuarioLogado", usuarioValidado);
-            return "catalogoLogin";
-//          NavigationHandler navigationHandler = context.getApplication().getNavigationHandler();
-//	        navigationHandler.handleNavigation(context, null, "loginSucesso"); // "loginSucesso" é o outcome definido no faces-config.xml
+            NavigationHandler navigationHandler = context.getApplication().getNavigationHandler();
+            navigationHandler.handleNavigation(context, null, "loginSucesso");
+
+            System.out.println("Login Efetuado");
 	    } else {
 	        // Login inválido, exibir mensagem de erro
 	        FacesContext.getCurrentInstance().addMessage(null,
 	                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login inválido", "Email ou senha incorretos"));
-	        return null;
 	    }
 	}
 	
@@ -142,27 +142,6 @@ public class UsuarioBean {
 	    }
 	}
 	
-	@Transactional
-    public void onRowEdit(RowEditEvent<Usuario> event) {
-		if (event.getObject().getId() == null) {
-	        FacesMessage msg = new FacesMessage("Product Edited", String.valueOf(event.getObject().getId()));
-	        UsuarioDao.atualizar(usuario);;
-	        FacesContext.getCurrentInstance().addMessage(null, msg);
-        } else {
-            System.out.println("Usuario não foi encontrado");
-        }
 
-    }
 
-    public void onRowCancel(RowEditEvent<Usuario> event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled", String.valueOf(event.getObject().getId()));
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-
-    public void deletarUsuario(Usuario usuario) {
-        UsuarioDao.deletar(usuario);
-        // Atualize a lista de usuários após deletar
-        List<Usuario> listaUsuarios = UsuarioDao.acharTodos();
-    }
-    
 }

@@ -6,8 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.servlet.http.HttpSession;
-
 
 @Entity
 public class Usuario {
@@ -22,51 +20,65 @@ public class Usuario {
 	private boolean ativo = true;
 	private String dataNasc;
 	private LocalDate dataCad = LocalDate.now();
-	
+
 	@Override
 	public String toString() {
-		return id + " - " + nome + " - " + telefone + " - " +email + " - " + senha  + " - " + ativo  + " - " + dataNasc  + " - " + dataCad;
+		return id + " - " + nome + " - " + telefone + " - " + email + " - " + senha + " - " + ativo + " - " + dataNasc
+				+ " - " + dataCad;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getSenha() {
 		return senha;
 	}
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public boolean isAtivo() {
 		return ativo;
 	}
+
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+
 	public String getDataNasc() {
 		return dataNasc;
 	}
+
 	public void setDataNasc(String dataNasc) {
 		this.dataNasc = dataNasc;
 	}
+
 	public LocalDate getDataCad() {
 		return dataCad;
 	}
+
 	public void setDataCad(LocalDate dataCad) {
 		this.dataCad = dataCad;
 	}
@@ -78,6 +90,5 @@ public class Usuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
-	
+
 }

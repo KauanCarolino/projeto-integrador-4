@@ -1,2 +1,13 @@
 @charset "ISO-8859-1";
-
+header{
+	text-align: center;
+}
+#conteudo{
+	text-align: center;
+}
+div{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/*background-color: #2B3035;*/
+}
