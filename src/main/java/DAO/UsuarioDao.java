@@ -7,12 +7,14 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpSession;
 
 import org.primefaces.PrimeFaces;
+import org.primefaces.event.RowEditEvent;
 
 import entidades.Usuario;
 import Util.JPAUtil;
@@ -35,7 +37,6 @@ public class UsuarioDao {
 		em.close();
 	}
 	
-	
 	public static void deletar(Usuario usuario) {
 		EntityManager em = JPAUtil.criarEntityManager();
 		em.getTransaction().begin();
@@ -52,14 +53,22 @@ public class UsuarioDao {
 		return a;
 	}
 	
-	
-	public static Usuario recuperarSenha(String email, String dataNasc) {
+	public static Usuario acharPorEmail(String email) {
 	    EntityManager em = JPAUtil.criarEntityManager();
-	    Usuario usuario = em.createQuery("SELECT a FROM Usuario a WHERE a.email = :email AND a.dataNasc = :dataNasc", Usuario.class)
-	                        .setParameter("email", email)
-	                        .setParameter("dataNasc", dataNasc)
-	                        .getSingleResult();
-	    em.close();
+	    
+	    TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email", Usuario.class);
+	    query.setParameter("email", email);
+	    
+	    Usuario usuario = null;
+	    
+	    try {
+	        usuario = query.getSingleResult();
+	    } catch (NoResultException e) {
+	        System.err.println(e);
+	    } finally {
+	        em.close();
+	    }
+	    
 	    return usuario;
 	}
 	
@@ -80,10 +89,23 @@ public class UsuarioDao {
 	    }
 	}
 	
+	public static Usuario validarEmailEDataNasc(String email, String dataNasc) {
+	    EntityManager em = JPAUtil.criarEntityManager();
+	    try {
+	        TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email AND u.dataNasc = :dataNasc", Usuario.class)
+	                .setParameter("email", email)
+	                .setParameter("dataNasc", dataNasc);
 
-
-
+	        Usuario usuario = query.getSingleResult();
+	        return usuario;
+	    } catch (NoResultException e) {
+	        return null; // Retorna false se nenhum usuário correspondente for encontrado
+	    } finally {
+	        em.close();
+	    }
+	}
 	
+
 	public static List<Usuario> acharTodos() {
 		EntityManager em = JPAUtil.criarEntityManager();
 		Query q = em.createQuery("select a from Usuario a");
@@ -91,6 +113,4 @@ public class UsuarioDao {
 		em.close();
 		return usuarios;
 	}
-	
-
 }

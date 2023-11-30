@@ -8,18 +8,16 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-
 	<meta charset="UTF-8"/>
     <title>Cadastro Carro</title> 
     <h:outputStylesheet library="css" name="estilo.css"/>
 </h:head>
 
-<h:body>
+<h:body style="background-color: #2B3035;">
 
-	<header>
-		A
+	<header style="margin-top: 60px; color: #FFFFFF">
+		<h1>Cadastro Carro</h1>
 	</header>
-	
 	<div id="conteudo">
 		<h:form>
 			<p:panelGrid columns="2">
@@ -44,9 +42,6 @@
 				<p:commandButton action="#{carroBean.salvar()}" value="Cadastra-se"/>
 			</p:panelGrid>
 		</h:form>
-	</div>
-
-    
+	</div>   
 </h:body>
 </html>
-

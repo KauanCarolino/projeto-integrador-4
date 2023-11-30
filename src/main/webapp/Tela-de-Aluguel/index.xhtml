@@ -1,6 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" data-bs-theme="dark" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml" data-bs-theme="dark" 
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+	  
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,8 +29,8 @@
                     </li>
 
                     <li>
-                        <a href="#">
-                            Contato
+                        <a id="gerarPDF" onclick="pdf()">
+                            Relatórios
                         </a>
                     </li>
 
@@ -47,7 +51,7 @@
     </div>    
 
     <section class="compra">
-        <div id="idCarro" class="carro">
+        <div id="idCarro" class="carro" >
             <h1>Ford Ranger</h1>
             <img src="../resources/img/carro1.png" alt="Ford Ranger" width="240px"/>
             <p>Com frete Grátis, a partir de</p>
@@ -76,8 +80,8 @@
 			<p>Preço base: Ceará</p>
 			<button id="botao2" onclick="exibirForm2()">Eu Quero</button>
 			<div id="Form2" class="forma" hidden="Form2">
-				<input id="name" type="text" name="name" placeholder="Nome" required="name"/>
-				<input id="tel" type="text" name="tel" placeholder="Telefone" required="tel"/>
+				<input id="name2" type="text" name="name" placeholder="Nome" required="name"/>
+				<input id="tel2" type="text" name="tel" placeholder="Telefone" required="tel"/>
 				<button onclick="ocultarForm2()">Enviar</button>
 			</div>
 		</div>
@@ -85,7 +89,7 @@
             <button onclick="mostrarCarro2()">Desistir do Carro</button>
         </div>
         
-		<div id="idCarro3" class="carro">
+        <div id="idCarro3" class="carro">
 			<h1>Volkswagen Polo TSI</h1>
 			<img src="../resources/img/carro3.png" alt="Volkswagen Polo TSI" width="240x"/>
 			<p>Com frete Gratis, a partir de</p>
@@ -95,8 +99,8 @@
 			<p>Preço base: Ceará</p>
 			<button id="botao3" onclick="exibirForm3()">Eu Quero</button>
 			<div id="Form3" class="forma" hidden="Form3">
-				<input id="name" type="text" name="name" placeholder="Nome" required="name"/>
-				<input id="tel" type="text" name="tel" placeholder="Telefone" required="tel"/>
+				<input id="name3" type="text" name="name" placeholder="Nome" required="name"/>
+				<input id="tel3" type="text" name="tel" placeholder="Telefone" required="tel"/>
 				<button onclick="ocultarForm3()">Enviar</button>
 			</div>
 		</div>
@@ -104,7 +108,7 @@
             <button onclick="mostrarCarro3()">Desistir do Carro</button>
         </div>
         
-		<div id="idCarro4" class="carro">
+        		<div id="idCarro4" class="carro">
 			<h1>Toyota Yaris</h1>
 			<img src="../resources/img/carro4.png" alt="Toyota Yaris" width="240px"/>
 			<p>Com frete Gratis, a partir de</p>
@@ -114,16 +118,16 @@
 			<p>Preço base: Ceará</p>
 			<button id="botao4" onclick="exibirForm4()">Eu Quero</button>
 			<div id="Form4" class="forma" hidden="Form4">
-				<input id="name" type="text" name="name" placeholder="Nome" required="name"/>
-				<input id="tel" type="text" name="tel" placeholder="Telefone" required="tel"/>
+				<input id="name4" type="text" name="name" placeholder="Nome" required="name"/>
+				<input id="tel4" type="text" name="tel" placeholder="Telefone" required="tel"/>
 				<button onclick="ocultarForm4()">Enviar</button>
 			</div>
 		</div>
 		<div id="retorno" style="display: none;">
             <button onclick="mostrarCarro4()">Desistir do Carro</button>
         </div>
-
-		<div id="idCarro5" class="carro">
+        
+        		<div id="idCarro5" class="carro">
 			<h1>Toyota Corolla</h1>
 			<img src="../resources/img/carro5.png" alt="Toyota Corolla" width="240px"/>
 			<p>Com frete Gratis, a partir de</p>
@@ -214,257 +218,12 @@
 		</div>
     </section>
 
-    <script>
-        function exibirForm() {
-            var form = document.querySelector("#Form1");
-            form.style.display = 'block';
+    <!-- Adicione a referência à biblioteca jsPDF -->
+<!-- Adicione a referência à biblioteca jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
 
-            var button = document.querySelector("#botao");
-            button.style.display = 'none';
+<script src="../resources/script.js" ></script>
 
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
 
-        function ocultarForm() {
-            var form = document.querySelector("#idCarro");
-            form.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'block';
-        }
-
-        function mostrarCarro() {
-            var form = document.querySelector("#idCarro");
-            form.style.display = 'block';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-        
-//      Carro 2
-        function exibirForm2() {
-            var form = document.querySelector("#Form2");
-            form.style.display = 'block';
-
-            var button = document.querySelector("#botao2");
-            button.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-
-        function ocultarForm2() {
-            var form = document.querySelector("#idCarro2");
-            form.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'block';
-        }
-        
-        function mostrarCarro2() {
-            var form = document.querySelector("#idCarro2");
-            form.style.display = 'block';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-        
-//     	Carro 3
-		function exibirForm3() {
-            var form = document.querySelector("#Form3");
-            form.style.display = 'block';
-
-            var button = document.querySelector("#botao3");
-            button.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-
-        function ocultarForm3() {
-            var form = document.querySelector("#idCarro3");
-            form.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'block';
-        }
-        
-        function mostrarCarro3() {
-            var form = document.querySelector("#idCarro3");
-            form.style.display = 'block';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-        
-//     	Carro 4
-		function exibirForm4() {
-            var form = document.querySelector("#Form4");
-            form.style.display = 'block';
-
-            var button = document.querySelector("#botao4");
-            button.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-
-        function ocultarForm4() {
-            var form = document.querySelector("#idCarro4");
-            form.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'block';
-        }
-        
-        function mostrarCarro4() {
-            var form = document.querySelector("#idCarro4");
-            form.style.display = 'block';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-		
-//     	Carro 5
-		function exibirForm5() {
-            var form = document.querySelector("#Form5");
-            form.style.display = 'block';
-
-            var button = document.querySelector("#botao5");
-            button.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-
-        function ocultarForm5() {
-            var form = document.querySelector("#idCarro5");
-            form.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'block';
-        }
-        
-        function mostrarCarro5() {
-            var form = document.querySelector("#idCarro5");
-            form.style.display = 'block';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-        
-//     	Carro 5
-		function exibirForm5() {
-            var form = document.querySelector("#Form5");
-            form.style.display = 'block';
-
-            var button = document.querySelector("#botao5");
-            button.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-
-        function ocultarForm5() {
-            var form = document.querySelector("#idCarro5");
-            form.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'block';
-        }
-        
-        function mostrarCarro5() {
-            var form = document.querySelector("#idCarro5");
-            form.style.display = 'block';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-        
-//     	Carro 6
-		function exibirForm6() {
-            var form = document.querySelector("#Form6");
-            form.style.display = 'block';
-
-            var button = document.querySelector("#botao6");
-            button.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-
-        function ocultarForm6() {
-            var form = document.querySelector("#idCarro6");
-            form.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'block';
-        }
-        
-        function mostrarCarro6() {
-            var form = document.querySelector("#idCarro6");
-            form.style.display = 'block';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-        
-//     	Carro 7
-		function exibirForm7() {
-            var form = document.querySelector("#Form7");
-            form.style.display = 'block';
-
-            var button = document.querySelector("#botao7");
-            button.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-
-        function ocultarForm7() {
-            var form = document.querySelector("#idCarro7");
-            form.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'block';
-        }
-        
-        function mostrarCarro7() {
-            var form = document.querySelector("#idCarro7");
-            form.style.display = 'block';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-        
-//     	Carro 8
-		function exibirForm8() {
-            var form = document.querySelector("#Form8");
-            form.style.display = 'block';
-
-            var button = document.querySelector("#botao8");
-            button.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-
-        function ocultarForm8() {
-            var form = document.querySelector("#idCarro8");
-            form.style.display = 'none';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'block';
-        }
-        
-        function mostrarCarro8() {
-            var form = document.querySelector("#idCarro8");
-            form.style.display = 'block';
-
-            var retorno = document.querySelector("#retorno");
-            retorno.style.display = 'none';
-        }
-    </script>
 </body>
 </html>

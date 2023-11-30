@@ -130,7 +130,7 @@ body{
   margin: 7.5px 0;
 }  
 
-#name, #tel{
+#name, #tel, #name2, #tel2, #name3, #tel3, #name4, #tel4{
   display: flex;
   flex-direction: column;
   height: 35px;
